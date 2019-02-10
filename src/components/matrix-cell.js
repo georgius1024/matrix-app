@@ -1,8 +1,12 @@
-// Компонент - ячейка матрицы.
-// Квадратная ячейка с числовым значением из Value
-// При указании ненулевого spotNo подкрашивается в цвет
-// При щелчке эмитирует событие input c новым значением ячейки
-Vue.component('matrix-cell', {
+/**
+ *  Matrix cell component - tiny clickable square 
+ * Props:
+ * Value - 0/1
+ * spotNo - >0 means cell is in spot and must be colored
+ * When clicked emits input event
+ */
+
+/Vue.component('matrix-cell', {
   props: {
     value: {
       type: Number,

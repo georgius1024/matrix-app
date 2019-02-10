@@ -4,6 +4,7 @@
  * const spotList = x.spotList
  * const spotMap = x.spotMap
  */
+
 'use strict'
 class SpotDetector {
   constructor(matrix) {

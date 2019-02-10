@@ -1,4 +1,7 @@
-// Create randomized color array and make it global
+/**
+ * Create randomized color array and make it global
+ */
+
 'use strict'
 window.colors = [
   '#E53935',

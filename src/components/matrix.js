@@ -1,10 +1,13 @@
-// Компонент - матрица.
-// Принимает параметры
-// rows и cols - размеры
-// value - матрица с данными
-// spotMap - массив, где для каждого row col определен номер домена или 0
-// При щелчке по ячейке матрица обновляется
-Vue.component('matrix', {
+/**
+ * Matrix component - contains array of matrix-cell
+ * Props:
+ * rows, cols - dimensions
+ * value - two-dimentional array of values (0/1)
+ * spotMap - object with spot coordinates 
+ * When clicked emits input event
+ */
+
+ Vue.component('matrix', {
   props: {
     rows: {
       type: [Number, String],
