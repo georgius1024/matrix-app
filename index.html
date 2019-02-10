@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Matrix app</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href="./src/main.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <v-app>
+      <v-content class="fill-height">
+        <v-card fill-height flat>
+          <v-toolbar dark card color="primary" extended prominent>
+            <v-toolbar-title>
+              Matrix app
+            </v-toolbar-title>
+            <template slot="extension">
+              <div style="width: 200px">
+                <v-text-field label="Строки" type="number" min="1" :max="maxRows" :rules="[validation.mustBeInRange(1, maxRows)]"
+                  v-model.number="newRows" />
+              </div>
+              <div class="mx-2">
+                ×
+              </div>
+              <div style="width: 200px">
+                <v-text-field label="Колонки" type="number" min="1" :max="maxCols" :rules="[validation.mustBeInRange(1, maxCols)]"
+                  v-model.number="newCols" />
+              </div>
+              <v-btn :disabled="!validDimensions" flat @click="resizeMatrix">
+                <v-icon>
+                  check
+                </v-icon>
+                Отобразить
+              </v-btn>
+              <div style="width: 200px" class="ml-5">
+                <v-text-field label="Вероятность" type="number" min="0.01" max="0.99" step="0.01" :rules="[validation.mustBeInRange(0.01, 0.99)]"
+                  v-model.number="newProb" />
+              </div>
+              <v-btn :disabled="!validProb" flat @click="populateMatrix">
+                <v-icon>
+                  transform
+                </v-icon>
+                Авто
+              </v-btn>
+              <v-btn @click="detectSpots" flat>
+                <v-icon>
+                  dashboard
+                </v-icon>
+                Посчитать домены
+              </v-btn>
+              <v-text-field v-if="spotCount" label="Количество доменов" :value="spotCount" readonly />
+            </template>
+
+          </v-toolbar>
+          <v-card-text>
+            <v-layout column align-center>
+              <div class="caption">{{stats}}</div>
+              <matrix v-model="matrix" :rows="rows" :cols="cols" :spot-map="spotMap" @input="storeState"></matrix>
+              <table class="history">
+                <thead>
+                  <tr>
+                    <th>Вероятность</th>
+                    <th>Количество доменов в матрице</th>
+                    <th>Количество ячеек в матрице (N×M)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in history" :key="index">
+                    <td class="right-align">
+                      {{item.prob}}
+                    </td>
+                    <td class="right-align">
+                      {{item.spotCount}}
+                    </td>
+                    <td class="right-align">
+                      {{item.rows}}×{{item.cols}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </v-layout>
+          </v-card-text>
+        </v-card>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script src="./src/components/matrix-cell.js"></script>
+  <script src="./src/components/matrix.js"></script>
+  <script src="./src/spot-detector.js"></script>
+  <script src="./src/validators.js"></script>
+  <script src="./src/colors.js"></script>
+  <script src="./src/main.js"></script>
+</body>
+
+</html>

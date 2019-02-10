@@ -1,0 +1,11 @@
+{
+  "name": "matrix-app",
+  "version": "1.0.0",
+  "description": "Spot detection in matrix",
+  "main": "index.js",
+  "author": "Yurii Timofeyev",
+  "scripts": {
+    "serve": "live-server .",
+    "prettier": "prettier --write --loglevel=warn **/*.js"
+  }
+}
