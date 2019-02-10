@@ -51,11 +51,11 @@ new Vue({
     },
     stats() {
       const filledCells = this.filledCells
-      return `Dimensions: ${this.rows}×${this.cols}, cells: ${
+      return `Размер: ${this.rows}×${this.cols}, количество ячеек: ${
         this.cellCount
-      }, checked: ${filledCells} (${Number(
+      }, отмечено: ${filledCells} (${Number(
         (filledCells * 100) / this.cellCount
-      ).toFixed(0)}%), domains: ${this.spotCount}`
+      ).toFixed(0)}%), количество доменов: ${this.spotCount}`
     },
     validDimensions() {
       return (
