@@ -17,7 +17,7 @@
         <v-card fill-height flat>
           <v-toolbar dark card color="primary" extended prominent>
             <v-toolbar-title>
-              [Matrix app]
+              Matrix app
             </v-toolbar-title>
             <template slot="extension">
               <div style="width: 200px">
@@ -78,7 +78,7 @@
                       {{item.spotCount}}
                     </td>
                     <td class="right-align">
-                      {{item.rows}}×{{item.cols}}
+                      {{item.rows * item.cols}}
                     </td>
                   </tr>
                 </tbody>
@@ -87,6 +87,13 @@
           </v-card-text>
         </v-card>
       </v-content>
+      <v-footer fixed dark>
+        Перейти в репозиторий: <a href="https://github.com/georgius1024/matrix-app" target="_blank" class="ml-2">
+          https://github.com/georgius1024/matrix-app
+        </a>
+        <v-spacer></v-spacer>
+        <div>&copy; {{ new Date().getFullYear() }}</div>
+      </v-footer>
     </v-app>
   </div>
 
