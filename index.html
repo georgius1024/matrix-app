@@ -61,7 +61,7 @@
             <v-layout column align-center>
               <div class="caption">{{stats}}</div>
               <matrix v-model="matrix" :rows="rows" :cols="cols" :spot-map="spotMap" @input="storeState"></matrix>
-              <table class="history">
+              <table class="history" v-if="history.length">
                 <thead>
                   <tr>
                     <th>Вероятность</th>
